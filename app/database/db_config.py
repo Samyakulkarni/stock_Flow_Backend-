@@ -11,7 +11,7 @@ load_dotenv(BASE_DIR / ".env")
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "mysql+pymysql://root:root@localhost:3306/stockflow_db",
+    "mysql+pymysql://root:root@host.docker.internal:3306/stockflow_db",
 )
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)

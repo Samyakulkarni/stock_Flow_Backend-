@@ -54,7 +54,23 @@ FastAPI backend for the StockFlow Product Management System.
 Create `.env` from `.env.example` and set:
 
 ```env
-DATABASE_URL=mysql+pymysql://root:root@localhost:3306/stockflow_db
+DATABASE_URL=mysql+pymysql://root:root@host.docker.internal:3306/stockflow_db
+```
+
+For Docker on Windows, `host.docker.internal` lets the FastAPI container connect to MySQL running on the host machine.
+
+## Docker
+
+Build the image:
+
+```powershell
+docker build -t stockflow-backend .
+```
+
+Run the container:
+
+```powershell
+docker run --name stockflow-backend -p 8000:8000 -e DATABASE_URL="mysql+pymysql://root:root@host.docker.internal:3306/stockflow_db" stockflow-backend
 ```
 
 ## API URLs
